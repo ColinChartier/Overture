@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <!--50% to 200%, a 150% range-->
+    <SeekBar
+        android:id="@+id/set_music_speed_seekbar"
+        android:max="150"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/set_music_speed_value"
+        android:layout_below="@id/set_music_speed_seekbar"
+        android:layout_centerHorizontal="true"
+        android:text="100%"
+        android:paddingRight="18dp"
+        android:paddingLeft="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp" />
+
+    <ImageButton
+        android:background="@null"
+        android:id="@+id/set_music_speed_decrease_button"
+        android:layout_toLeftOf="@id/set_music_speed_value"
+        android:layout_toStartOf="@id/set_music_speed_value"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_minus_grey" />
+
+    <ImageButton
+        android:background="@null"
+        android:id="@+id/set_music_speed_increase_button"
+        android:layout_toRightOf="@id/set_music_speed_value"
+        android:layout_toEndOf="@id/set_music_speed_value"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_plus_grey" />
+</RelativeLayout>
