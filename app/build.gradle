@@ -4,9 +4,11 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     }
 }
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt' //allows compile-time annotation processors using the 'apt' dependency keyword
 
 repositories {
     jcenter()
@@ -33,5 +35,11 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile group: 'com.sothree.slidinguppanel', name:'library', version:'3.2.0'
+    compile group: 'com.android.support', name:'appcompat-v7', version:'23.1.1'
+    compile group: 'com.jakewharton', name:'butterknife', version:'7.0.1'
+    compile group: 'com.google.dagger', name:'dagger', version:'2.0'
+    compile group: 'com.google.guava', name: 'guava', version: '18.0'
+
+    apt 'com.google.dagger:dagger-compiler:2.0'
 }

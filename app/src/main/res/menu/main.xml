@@ -1,12 +1,39 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
-      tools:context=".MainActivity">
-    <item android:id="@+id/action_example"
-          android:title="@string/action_example"
-          app:showAsAction="withText|ifRoom"/>
-    <item android:id="@+id/action_settings"
-          android:title="@string/action_settings"
-          android:orderInCategory="100"
-          app:showAsAction="never"/>
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      tools:context="user.theovercaste.overture.activities.MainActivity">
+
+    <item
+            android:id="@+id/action_sort_by"
+            android:orderInCategory="200"
+            app:showAsAction="always"
+            android:title="@string/sort_by"
+            android:icon="@drawable/ic_sort_white">
+        <menu>
+            <item
+                    android:id="@+id/sort_by_artist"
+                    android:title="@string/artist" />
+            <item
+                    android:id="@+id/sort_by_title"
+                    android:title="@string/title" />
+            <item
+                    android:id="@+id/sort_by_album"
+                    android:title="@string/album" />
+            <item
+                    android:id="@+id/shuffle"
+                    android:title="@string/shuffle" />
+        </menu>
+    </item>
+
+    <item
+            android:id="@+id/action_delete_playlist"
+            android:title="@string/action_delete_playlist"
+            android:icon="@drawable/ic_delete_white"
+            app:showAsAction="ifRoom" />
+
+    <item
+            android:id="@+id/action_edit_playlist"
+            android:title="@string/action_edit_playlist"
+            android:icon="@drawable/ic_table_edit_white"
+            app:showAsAction="ifRoom" />
 </menu>
