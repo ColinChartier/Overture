@@ -18,12 +18,24 @@
             sothree:umanoShadowHeight="4dp">
 
         <!-- Main content -->
-        <fragment android:id="@+id/song_list_fragment"
-                  android:layout_width="@dimen/left_drawer_width"
-                  android:layout_height="match_parent"
-                  android:layout_gravity="start"
-                  android:name="com.colinchartier.overture.app.fragments.impl.SongListFragment"
-                  tools:layout="@layout/fragment_song_list"/>
+        <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:orientation="vertical">
+
+            <include
+                    android:id="@+id/app_bar"
+                    layout="@layout/app_bar"/>
+
+
+            <fragment android:id="@+id/song_list_fragment"
+                      android:layout_width="@dimen/left_drawer_width"
+                      android:layout_height="match_parent"
+                      android:layout_gravity="start"
+                      android:name="com.colinchartier.overture.app.fragments.impl.SongListFragment"
+                      tools:layout="@layout/fragment_song_list"/>
+        </LinearLayout>
+
 
         <!-- Bottom bar -->
         <fragment android:id="@+id/bottom_bar_drawer_fragment"
