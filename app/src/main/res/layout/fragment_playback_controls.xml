@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+          android:id="@+id/playback_controls_fragment"
           android:layout_width="match_parent"
           android:layout_height="match_parent">
     <LinearLayout
@@ -20,7 +21,7 @@
 
         <fragment
                 android:id="@+id/music_bars_fragment"
-                android:name="com.colinchartier.overture.app.fragments.MusicBarsFragment"
+                android:name="com.colinchartier.overture.app.fragments.impl.MusicBarsFragment"
                 android:layout_width="match_parent"
                 android:layout_height="0px"
                 android:layout_weight="1"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Overture</string>
+    <string name="app_name">Overture-v2beta</string>
     <string name="action_settings">Settings</string>
     <string name="action_delete_playlist">Delete Playlist</string>
     <string name="settings">Settings</string>

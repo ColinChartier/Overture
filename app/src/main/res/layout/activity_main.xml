@@ -22,14 +22,14 @@
                   android:layout_width="@dimen/left_drawer_width"
                   android:layout_height="match_parent"
                   android:layout_gravity="start"
-                  android:name="com.colinchartier.overture.app.SongListFragment"
+                  android:name="com.colinchartier.overture.app.fragments.impl.SongListFragment"
                   tools:layout="@layout/fragment_song_list"/>
 
         <!-- Bottom bar -->
         <fragment android:id="@+id/bottom_bar_drawer_fragment"
                   android:layout_width="match_parent"
                   android:layout_height="match_parent"
-                  android:name="com.colinchartier.overture.app.SongControlsFragment"
+                  android:name="com.colinchartier.overture.app.fragments.impl.SongControlsFragment"
                   tools:layout="@layout/fragment_song_controls"/>
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
@@ -37,7 +37,7 @@
               android:layout_width="@dimen/left_drawer_width"
               android:layout_height="match_parent"
               android:layout_gravity="start"
-              android:name="com.colinchartier.overture.app.NavigationDrawerFragment"
+              android:name="com.colinchartier.overture.app.fragments.impl.NavigationDrawerFragment"
               tools:layout="@layout/fragment_navigation_drawer"/>
 
 </android.support.v4.widget.DrawerLayout>

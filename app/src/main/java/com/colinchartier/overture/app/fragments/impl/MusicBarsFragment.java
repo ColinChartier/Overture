@@ -1,4 +1,4 @@
-package com.colinchartier.overture.app.fragments;
+package com.colinchartier.overture.app.fragments.impl;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,11 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import com.colinchartier.overture.app.fragments.listeners.OnMusicBarPressListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.colinchartier.overture.app.fragments.listeners.OnMusicBarPressListener;
 
 public class MusicBarsFragment extends Fragment {
     private static final int BARS_HEIGHT = 30; // dp
@@ -21,9 +20,9 @@ public class MusicBarsFragment extends Fragment {
     private static final int MAX_PROGRESS = 10000;
 
     private int lastHeight = 0;
-    private final List<MusicBar> bars = new ArrayList<MusicBar>();
+    private final List<MusicBar> bars = new ArrayList<>();
 
-    private final List<OnMusicBarPressListener> musicBarPressListeners = new ArrayList<OnMusicBarPressListener>();
+    private final List<OnMusicBarPressListener> musicBarPressListeners = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
