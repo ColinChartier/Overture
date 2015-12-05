@@ -1,4 +1,4 @@
-package com.colinchartier.overture.app.fragments.impl;
+package com.colinchartier.overture.app.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,9 +11,10 @@ import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 import com.colinchartier.overture.app.R;
 import com.colinchartier.overture.app.fragments.presenters.SongListPresenter;
+import com.colinchartier.overture.app.fragments.views.SongListView;
 import com.google.common.base.Preconditions;
 
-public class SongListFragment extends Fragment {
+public class SongListFragment extends Fragment implements SongListView {
     private SongListPresenter presenter;
 
     @Bind(R.id.song_list)

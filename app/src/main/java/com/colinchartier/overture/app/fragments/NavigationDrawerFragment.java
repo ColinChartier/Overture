@@ -1,4 +1,4 @@
-package com.colinchartier.overture.app.fragments.impl;
+package com.colinchartier.overture.app.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

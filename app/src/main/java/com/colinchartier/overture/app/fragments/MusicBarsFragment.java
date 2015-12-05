@@ -1,28 +1,35 @@
-package com.colinchartier.overture.app.fragments.impl;
+package com.colinchartier.overture.app.fragments;
 
-import android.app.Fragment;
+import android.content.Context;
+import android.graphics.*;
+import android.graphics.drawable.ClipDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.AttributeSet;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.*;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import com.colinchartier.overture.app.fragments.listeners.OnMusicBarPressListener;
+import com.colinchartier.overture.app.fragments.presenters.MusicBarsPresenter;
+import com.colinchartier.overture.app.fragments.views.MusicBarsView;
+import com.google.common.base.Preconditions;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MusicBarsFragment extends Fragment {
+public class MusicBarsFragment extends Fragment implements MusicBarsView {
     private static final int BARS_HEIGHT = 30; // dp
     private static final int BAR_PADDING = 7; // dp
     private static final int MAX_PROGRESS = 10000;
 
+    private MusicBarsPresenter presenter;
+
     private int lastHeight = 0;
     private final List<MusicBar> bars = new ArrayList<>();
-
-    private final List<OnMusicBarPressListener> musicBarPressListeners = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,6 +45,11 @@ public class MusicBarsFragment extends Fragment {
         //l.setBackgroundColor(0);
         l.setOrientation(LinearLayout.VERTICAL);
         return l;
+    }
+
+    public void setPresenter(MusicBarsPresenter presenter) {
+        Preconditions.checkState(presenter == null, "Presenter is already set!");
+        this.presenter = presenter;
     }
 
     private void generateBars(int height) { // This is ugly, but I ran out of patience with .resize()
@@ -74,9 +86,7 @@ public class MusicBarsFragment extends Fragment {
                         double percent =
                                 percentPerBar * barIndex + //add the percentages of all of the bars above this one,
                                         percentPerBar * ((double) event.getX() / (double) v.getWidth()); //and the percentage of the specific click
-                        for (OnMusicBarPressListener l : musicBarPressListeners) {
-                            l.onMusicBarPress(percent);
-                        }
+                        presenter.onMusicBarPress(percent);
                         return true;
                     }
                     return false;
@@ -86,6 +96,7 @@ public class MusicBarsFragment extends Fragment {
         }
     }
 
+    @Override
     public void setPercent(final double percent) {
         double percentPerBar = 100d / bars.size();
         double pmod = percent % percentPerBar;
@@ -102,15 +113,83 @@ public class MusicBarsFragment extends Fragment {
         }
     }
 
+    @Override
     public int getBarCount() {
         return bars.size();
     }
 
-    public void addMusicBarPressListener(OnMusicBarPressListener listener) {
-        musicBarPressListeners.add(listener);
-    }
+    private static class MusicBar extends ProgressBar {
+        private static final Interpolator DEFAULT_INTERPOLATOR = new AccelerateDecelerateInterpolator();
 
-    public void removeMusicBarPressListener(OnMusicBarPressListener listener) {
-        musicBarPressListeners.remove(listener);
+        public MusicBar(Context context) {
+            this(context, null);
+        }
+
+        public MusicBar(Context context, AttributeSet attrs) {
+            super(context, attrs, android.R.attr.progressBarStyleHorizontal);
+            setProgressDrawable(
+                    new LayerDrawable(new Drawable[]{
+                            new MusicBarBackgroundDrawable(),
+                            new ClipDrawable(
+                                    new MusicBarForegroundDrawable(), Gravity.START, ClipDrawable.HORIZONTAL)
+                    })
+            );
+        }
+
+        private final class MusicBarForegroundDrawable extends Drawable {
+            @Override
+            public void draw(Canvas canvas) {
+                Rect bounds = getBounds();
+                Paint p = new Paint();
+                int width = bounds.width();
+                int height = bounds.height();
+                p.setColor(Color.BLUE);
+                canvas.drawRoundRect(new RectF(0.0f, 0.0f, width, height), 1, 1, p);
+            }
+
+            @Override
+            public void setAlpha(int alpha) {
+
+            }
+
+            @Override
+            public void setColorFilter(ColorFilter cf) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public int getOpacity() {
+                return PixelFormat.OPAQUE;
+            }
+        }
+
+        private final class MusicBarBackgroundDrawable extends Drawable {
+            @Override
+            public void draw(Canvas canvas) {
+                Rect bounds = getBounds();
+                Paint p = new Paint();
+                int width = bounds.width();
+                int height = bounds.height();
+                p.setColor(Color.CYAN);
+                canvas.drawRoundRect(new RectF(0.0f, 0.0f, width, height), 1, 1, p);
+            }
+
+            @Override
+            public void setAlpha(int alpha) {
+
+            }
+
+            @Override
+            public void setColorFilter(ColorFilter cf) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public int getOpacity() {
+                return PixelFormat.OPAQUE;
+            }
+        }
     }
 }
