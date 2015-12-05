@@ -41,6 +41,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         super.onViewCreated(view, savedInstanceState);
 
         ButterKnife.bind(this, view);
+        presenter.init();
     }
 
     @OnItemClick(R.id.playlist_list)
