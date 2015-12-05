@@ -6,18 +6,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
 import com.colinchartier.overture.app.R;
+import com.colinchartier.overture.app.fragments.presenters.NavigationDrawerPresenter;
 import com.colinchartier.overture.app.fragments.views.NavigationDrawerView;
+import com.google.common.base.Preconditions;
 
 public class NavigationDrawerFragment extends Fragment implements NavigationDrawerView {
+    private NavigationDrawerPresenter presenter;
+
     @Bind(R.id.playlist_list)
     ListView playlists;
 
     public NavigationDrawerFragment() {
         //Required empty constructor
+    }
+
+    public void setPresenter(NavigationDrawerPresenter presenter) {
+        Preconditions.checkState(presenter == null, "Presenter is already set!");
+        this.presenter = presenter;
     }
 
     @Override
@@ -32,12 +43,18 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         ButterKnife.bind(this, view);
     }
 
-    @OnClick(R.id.playlist_new)
-    public void onNewPlaylistClicked(View view) {
+    @OnItemClick(R.id.playlist_list)
+    public void onPlaylistClicked(View view, int position) {
+        presenter.onPlaylistClicked(((TextView) view).getText().toString());
+    }
 
+    @OnClick(R.id.playlist_new)
+    public void onNewPlaylistButtonClicked(View button) {
+        presenter.onNewPlaylistButtonClicked(button);
     }
 
     @OnClick(R.id.license_info)
-    public void onLicenseInfoClicked(View view) {
+    public void onLicenseInfoButtonClciked(View button) {
+        presenter.onLicenseInfoButtonClicked(button);
     }
 }

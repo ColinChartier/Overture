@@ -8,14 +8,24 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 import com.colinchartier.overture.app.R;
+import com.colinchartier.overture.app.fragments.presenters.SongListPresenter;
+import com.google.common.base.Preconditions;
 
 public class SongListFragment extends Fragment {
+    private SongListPresenter presenter;
+
     @Bind(R.id.song_list)
     ListView songList;
 
     public SongListFragment() {
         //Required empty constructor
+    }
+
+    public void setPresenter(SongListPresenter presenter) {
+        Preconditions.checkState(presenter == null, "Presenter is already set!");
+        this.presenter = presenter;
     }
 
     @Override
@@ -28,5 +38,10 @@ public class SongListFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ButterKnife.bind(this, view);
+    }
+
+    @OnItemClick(R.id.song_list)
+    public void onSongClicked(View view, int position) {
+        presenter.onSongClicked(view, position);
     }
 }

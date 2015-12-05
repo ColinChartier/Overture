@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+
+    <!--Unlike the smaller screen version, all of these are on the same row. -->
+
+    <ImageButton
+            android:background="@null"
+            android:id="@+id/repeat_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_repeat_grey"/>
+
+    <ImageButton
+            android:background="@null"
+            android:id="@+id/skip_previous_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_skip_previous_grey"/>
+
+    <ImageButton
+            android:background="@null"
+            android:id="@+id/rewind_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_fast_rewind_grey"/>
+
+    <ImageButton
+            android:background="@null"
+            android:id="@+id/playpause_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_play_arrow_grey"/>
+
+    <ImageButton
+            android:background="@null"
+            android:id="@+id/fast_forward_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_fast_forward_grey"/>
+
+    <ImageButton
+            android:background="@null"
+            android:id="@+id/skip_next_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:src="@drawable/ic_skip_next_grey"/>
+
+    <Button
+            android:id="@+id/set_playback_speed_button"
+            android:text="100%"
+            android:textColor="#757575"
+            android:drawableTop="@drawable/ic_speedometer_grey"
+            android:background="@null"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"/>
+</LinearLayout>

@@ -6,20 +6,78 @@
         android:background="#FFFFFF"
         android:orientation="vertical">
 
-    <include
-            layout="@layout/media_controls_primary"
+    <!-- Primary controls, first row -->
+    <LinearLayout
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
             android:layout_width="match_parent"
-            android:layout_height="64dp"/>
+            android:layout_height="match_parent">
 
-    <include
-            layout="@layout/media_controls_secondary"
-            android:layout_width="match_parent"
-            android:layout_height="64dp"/>
+        <ImageButton
+                android:background="@null"
+                android:id="@+id/skip_previous_button"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:src="@drawable/ic_skip_previous_grey"/>
 
-    <fragment
-            android:id="@+id/music_bars_fragment"
-            android:name="com.colinchartier.overture.app.fragments.impl.MusicBarsFragment"
+        <ImageButton
+                android:background="@null"
+                android:id="@+id/rewind_button"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:src="@drawable/ic_fast_rewind_grey"/>
+
+        <ImageButton
+                android:background="@null"
+                android:id="@+id/playpause_button"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:src="@drawable/ic_play_arrow_grey"/>
+
+        <ImageButton
+                android:background="@null"
+                android:id="@+id/fast_forward_button"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:src="@drawable/ic_fast_forward_grey"/>
+
+        <ImageButton
+                android:background="@null"
+                android:id="@+id/skip_next_button"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:src="@drawable/ic_skip_next_grey"/>
+    </LinearLayout>
+
+    <!-- Secondary media controls -->
+    <LinearLayout
+            android:orientation="horizontal"
+            android:background="#FFFFFF"
             android:layout_width="match_parent"
-            android:layout_height="0px"
-            android:layout_weight="1"/>
+            android:layout_height="match_parent">
+
+        <ImageButton
+                android:background="@null"
+                android:id="@+id/repeat_button"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:src="@drawable/ic_repeat_grey"/>
+
+        <Button
+                android:id="@+id/set_playback_speed_button"
+                android:text="100%"
+                android:textColor="#757575"
+                android:drawableTop="@drawable/ic_speedometer_grey"
+                android:background="@null"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"/>
+    </LinearLayout>
+
 </LinearLayout>
