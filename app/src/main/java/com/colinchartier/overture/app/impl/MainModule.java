@@ -12,10 +12,13 @@ import com.colinchartier.overture.app.fragments.views.MusicBarsView;
 import com.colinchartier.overture.app.fragments.views.NavigationDrawerView;
 import com.colinchartier.overture.app.fragments.views.SongControlsView;
 import com.colinchartier.overture.app.fragments.views.SongListView;
+import com.colinchartier.overture.app.playlist.PlaylistDatabaseHelper;
 import com.colinchartier.overture.app.playlist.PlaylistManager;
 import com.colinchartier.overture.app.playlist.impl.DefaultPlaylistManager;
 import dagger.Module;
 import dagger.Provides;
+
+import javax.inject.Singleton;
 
 @Module
 public class MainModule {
@@ -53,6 +56,12 @@ public class MainModule {
     }
 
     @Provides
+    @Singleton
+    public DefaultDatabaseHelper provideDefaultDatabaseHelper(@FromContext(ContextType.ACTIVITY) Context activityContext) {
+        return new DefaultDatabaseHelper(activityContext);
+    }
+
+    @Provides
     public MusicBarsPresenter provideMusicBarsPresenter() {
         return null; //TODO
     }
@@ -80,5 +89,10 @@ public class MainModule {
     @Provides
     public PlaylistManager providePlaylistManager(DefaultPlaylistManager manager) {
         return manager;
+    }
+
+    @Provides
+    public PlaylistDatabaseHelper providePlaylistDatabaseHelper(DefaultDatabaseHelper helper) {
+        return helper;
     }
 }
