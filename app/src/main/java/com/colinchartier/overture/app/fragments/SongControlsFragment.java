@@ -34,7 +34,7 @@ public class SongControlsFragment extends Fragment implements SongControlsView {
     }
 
     public void setPresenter(SongControlsPresenter presenter) {
-        Preconditions.checkState(presenter == null, "Presenter is already set!");
+        Preconditions.checkState(this.presenter == null, "Presenter is already set!");
         this.presenter = presenter;
     }
 

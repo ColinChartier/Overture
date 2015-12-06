@@ -25,7 +25,7 @@ public class SongListFragment extends Fragment implements SongListView {
     }
 
     public void setPresenter(SongListPresenter presenter) {
-        Preconditions.checkState(presenter == null, "Presenter is already set!");
+        Preconditions.checkState(this.presenter == null, "Presenter is already set!");
         this.presenter = presenter;
     }
 

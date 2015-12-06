@@ -6,7 +6,10 @@ import com.colinchartier.overture.app.fragments.presenters.SongControlsPresenter
 import com.colinchartier.overture.app.fragments.presenters.SongListPresenter;
 import dagger.Component;
 
+import javax.inject.Singleton;
+
 @Component(modules = {MainModule.class})
+@Singleton
 public interface MainComponent {
     MusicBarsPresenter musicBarsPresenter();
 

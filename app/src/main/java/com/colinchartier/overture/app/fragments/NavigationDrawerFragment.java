@@ -27,7 +27,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     }
 
     public void setPresenter(NavigationDrawerPresenter presenter) {
-        Preconditions.checkState(presenter == null, "Presenter is already set!");
+        Preconditions.checkState(this.presenter == null, "Presenter is already set!");
         this.presenter = presenter;
     }
 
@@ -39,8 +39,13 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         ButterKnife.bind(this, view);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
         presenter.init();
     }
 

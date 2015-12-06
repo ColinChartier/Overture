@@ -48,7 +48,7 @@ public class MusicBarsFragment extends Fragment implements MusicBarsView {
     }
 
     public void setPresenter(MusicBarsPresenter presenter) {
-        Preconditions.checkState(presenter == null, "Presenter is already set!");
+        Preconditions.checkState(this.presenter == null, "Presenter is already set!");
         this.presenter = presenter;
     }
 

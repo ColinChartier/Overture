@@ -43,6 +43,7 @@ public class MainModule {
         this.songListView = songListView;
     }
 
+    /*Contextual stuff*/
     @Provides
     @FromContext(ContextType.ACTIVITY)
     public Context provideActivityContext() {
@@ -56,32 +57,6 @@ public class MainModule {
     }
 
     @Provides
-    @Singleton
-    public DefaultDatabaseHelper provideDefaultDatabaseHelper(@FromContext(ContextType.ACTIVITY) Context activityContext) {
-        return new DefaultDatabaseHelper(activityContext);
-    }
-
-    @Provides
-    public MusicBarsPresenter provideMusicBarsPresenter() {
-        return null; //TODO
-    }
-
-    @Provides
-    public NavigationDrawerPresenter provideNavigationDrawerPresenter(DefaultNavigationDrawerPresenter presenter) {
-        return presenter;
-    }
-
-    @Provides
-    public SongControlsPresenter provideSongControlsPresenter() {
-        return null;
-    }
-
-    @Provides
-    public SongListPresenter provideSongListPresenter() {
-        return null;
-    }
-
-    @Provides
     public FragmentManager provideFragmentManager() {
         return fragmentManager;
     }
@@ -91,8 +66,58 @@ public class MainModule {
         return manager;
     }
 
+    /*Contextual views*/
+    @Provides
+    public MusicBarsView provideMusicBarsView() {
+        return musicBarsView;
+    }
+
+    @Provides
+    public NavigationDrawerView provideNavDrawerView() {
+        return navDrawerView;
+    }
+
+    @Provides
+    public SongControlsView provideSongControlsView() {
+        return songControlsView;
+    }
+
+    @Provides
+    public SongListView provideSongListView() {
+        return songListView;
+    }
+
+    /*Default implementations*/
+    @Provides
+    @Singleton
+    public DefaultDatabaseHelper provideDefaultDatabaseHelper(@FromContext(ContextType.ACTIVITY) Context activityContext) {
+        return new DefaultDatabaseHelper(activityContext);
+    }
+
+    /*Model*/
     @Provides
     public PlaylistDatabaseHelper providePlaylistDatabaseHelper(DefaultDatabaseHelper helper) {
         return helper;
+    }
+
+    /*Presenters*/
+    @Provides
+    public MusicBarsPresenter provideMusicBarsPresenter(DefaultMusicBarsPresenter presenter) {
+        return presenter;
+    }
+
+    @Provides
+    public NavigationDrawerPresenter provideNavigationDrawerPresenter(DefaultNavigationDrawerPresenter presenter) {
+        return presenter;
+    }
+
+    @Provides
+    public SongControlsPresenter provideSongControlsPresenter(DefaultSongControlsPresenter presenter) {
+        return presenter;
+    }
+
+    @Provides
+    public SongListPresenter provideSongListPresenter(DefaultSongListPresenter presenter) {
+        return presenter;
     }
 }
