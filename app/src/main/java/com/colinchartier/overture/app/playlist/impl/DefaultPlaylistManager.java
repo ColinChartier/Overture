@@ -1,11 +1,14 @@
 package com.colinchartier.overture.app.playlist.impl;
 
 import android.content.Context;
+import com.colinchartier.overture.app.ContextType;
+import com.colinchartier.overture.app.FromContext;
 import com.colinchartier.overture.app.playlist.Playlist;
 import com.colinchartier.overture.app.playlist.PlaylistDatabaseHelper;
 import com.colinchartier.overture.app.playlist.PlaylistManager;
 import com.colinchartier.overture.app.playlist.listeners.OnPlaylistListChangedListener;
 
+import javax.inject.Inject;
 import java.util.*;
 
 
@@ -22,7 +25,8 @@ public class DefaultPlaylistManager implements PlaylistManager {
     final Playlist allSongsPlaylist;
 
 
-    public DefaultPlaylistManager(Context ctx, PlaylistDatabaseHelper databaseHelper) {
+    @Inject
+    public DefaultPlaylistManager(@FromContext(ContextType.ACTIVITY) Context ctx, PlaylistDatabaseHelper databaseHelper) {
         this.databaseHelper = databaseHelper;
 
         this.allSongsPlaylist = new AllSongsPlaylist(ctx);
@@ -94,5 +98,10 @@ public class DefaultPlaylistManager implements PlaylistManager {
     @Override
     public boolean isPlaylistDefault(String name) {
         return name != null && (name.equals(allSongsPlaylist.getName()));
+    }
+
+    @Override
+    public void selectPlaylist(String playlistName) {
+        //TODO
     }
 }

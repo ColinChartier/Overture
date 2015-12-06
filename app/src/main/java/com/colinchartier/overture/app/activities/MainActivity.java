@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         songListFragment = (SongListFragment) getSupportFragmentManager().findFragmentById(R.id.song_list_fragment);
 
         //Inject presenters
-        MainModule module = new MainModule(musicBarsFragment, navDrawerFragment, songControlsFragment, songListFragment);
+        MainModule module = new MainModule(this, getApplicationContext(), getSupportFragmentManager(), musicBarsFragment, navDrawerFragment, songControlsFragment, songListFragment);
         MainComponent component = DaggerMainComponent.builder().mainModule(module).build();
         musicBarsFragment.setPresenter(component.musicBarsPresenter());
         navDrawerFragment.setPresenter(component.navDrawerPresenter());

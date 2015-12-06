@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -14,33 +15,39 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.colinchartier.overture.app.R;
-import com.colinchartier.overture.app.dialogs.presenters.CreatePlaylistPresenter;
-import com.colinchartier.overture.app.dialogs.views.CreatePlaylistView;
-import com.colinchartier.overture.app.playlist.Playlist;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.regex.Pattern;
 
-public class CreatePlaylistDialog extends DialogFragment implements CreatePlaylistView {
-    private CreatePlaylistPresenter presenter;
+public class CreatePlaylistDialog extends DialogFragment {
+    private static final String LOG_TAG = "CREATE_PLAYLIST";
 
+    private Listener listener;
     private AlertDialog alert;
+
+    private String playlistName = "";
+    private Set<String> existingPlaylistNames = new HashSet<String>();
+    private static final Pattern WHITESPACE_PATTERN = Pattern.compile("^\\s+$");
+
 
     private boolean createPlaylistButtonEnabled = true;
 
-
-    /**
-     * Creates a new instance of a presenter playlist dialog fragment.<br>
-     * Calling the constructor directly will cause errors! Use {@link #newInstance(CreatePlaylistPresenter)} instead!
-     */
     @Deprecated
     public CreatePlaylistDialog() {
         super();
     }
 
-    public static CreatePlaylistDialog newInstance(CreatePlaylistPresenter presenter) {
-        CreatePlaylistDialog fragment = new CreatePlaylistDialog();
-        fragment.presenter = presenter;
-        return fragment;
+    public static CreatePlaylistDialog newInstance() {
+        return new CreatePlaylistDialog();
+    }
+
+    public void setListener(Listener listener) {
+        this.listener = listener;
+    }
+
+    public void setExistingPlaylistNames(Set<String> existingPlaylistNames) {
+        this.existingPlaylistNames = existingPlaylistNames;
     }
 
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -51,7 +58,6 @@ public class CreatePlaylistDialog extends DialogFragment implements CreatePlayli
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE ||
                         (event != null && event.getAction() == KeyEvent.ACTION_DOWN && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
-                    presenter.onComplete();
                     dismiss();
                     return true;
                 }
@@ -69,36 +75,50 @@ public class CreatePlaylistDialog extends DialogFragment implements CreatePlayli
 
             @Override
             public void afterTextChanged(Editable s) {
-                presenter.onPlaylistNameChanged(s.toString());
+                playlistName = s.toString();
+                checkValidPlaylistName();
             }
         });
-        presenter.init();
+        checkValidPlaylistName();
 
         alert = (new AlertDialog.Builder(getActivity())).setMessage("Create Playlist")
                 .setView(view)
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        presenter.onComplete();
+                        onFinish();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        presenter.onCancel();
+                        dismiss();
                     }
                 }).create();
         alert.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface dialog) {
-                presenter.init();
+                checkValidPlaylistName();
             }
         });
         return alert;
     }
 
-    @Override
-    public void setCreatePlaylistButtonEnabled(boolean enabled) {
+    private void onFinish() {
+        if (playlistNameValid(playlistName)) {
+            listener.onPlaylistCreated(playlistName);
+            dismiss();
+        } else {
+            Log.e(LOG_TAG, "Somehow managed to click 'accept' on an invalid playlist name!");
+            dismiss();
+        }
+    }
+
+    private void checkValidPlaylistName() {
+        setCreatePlaylistButtonEnabled(playlistNameValid(playlistName));
+    }
+
+    private void setCreatePlaylistButtonEnabled(boolean enabled) {
         if (alert != null) {
             Button b = alert.getButton(AlertDialog.BUTTON_POSITIVE);
             if (b != null) {
@@ -107,7 +127,17 @@ public class CreatePlaylistDialog extends DialogFragment implements CreatePlayli
         }
     }
 
-    public void setPlaylistList(List<Playlist> playlistList) {
-        presenter.setPlaylistList(playlistList);
+    private boolean playlistNameValid(String playlistName) {
+        if (playlistName == null || playlistName.length() == 0) {
+            return false;
+        }
+        if (existingPlaylistNames.contains(playlistName)) { //Non-unique name
+            return false;
+        }
+        return !WHITESPACE_PATTERN.matcher(playlistName).matches();
+    }
+
+    public interface Listener {
+        void onPlaylistCreated(String playlistName);
     }
 }

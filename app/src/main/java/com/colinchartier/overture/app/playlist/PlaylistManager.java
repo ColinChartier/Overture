@@ -30,4 +30,6 @@ public interface PlaylistManager {
     Playlist getDefaultPlaylist();
 
     boolean isPlaylistDefault(String name);
+
+    void selectPlaylist(String playlistName);
 }
