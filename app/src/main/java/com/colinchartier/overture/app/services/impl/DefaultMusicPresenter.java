@@ -42,7 +42,7 @@ public class DefaultMusicPresenter implements MusicPresenter {
     }
 
     @Override
-    public void seekToPercent(int percent) {
+    public void seekToPercent(double percent) {
 
     }
 

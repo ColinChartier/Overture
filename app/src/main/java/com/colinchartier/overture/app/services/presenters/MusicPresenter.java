@@ -15,7 +15,7 @@ public interface MusicPresenter {
 
     void skipPrevious();
 
-    void seekToPercent(int percent);
+    void seekToPercent(double percent);
 
     void skipBackward(long timeUs);
 

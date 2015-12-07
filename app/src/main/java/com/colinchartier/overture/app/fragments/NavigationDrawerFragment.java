@@ -49,6 +49,13 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         presenter.init();
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        presenter.stop();
+    }
+
     @OnItemClick(R.id.playlist_list)
     public void onPlaylistClicked(View view, int position) {
         presenter.onPlaylistClicked(((TextView) view).getText().toString());

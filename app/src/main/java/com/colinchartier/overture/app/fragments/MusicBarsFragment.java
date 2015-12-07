@@ -47,6 +47,20 @@ public class MusicBarsFragment extends Fragment implements MusicBarsView {
         return l;
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        presenter.init();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        presenter.stop();
+    }
+
     public void setPresenter(MusicBarsPresenter presenter) {
         Preconditions.checkState(this.presenter == null, "Presenter is already set!");
         this.presenter = presenter;

@@ -48,6 +48,12 @@ public class SongControlsFragment extends Fragment implements SongControlsView {
         super.onViewCreated(view, savedInstanceState);
 
         ButterKnife.bind(this, view);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
         presenter.init();
     }
 

@@ -48,6 +48,12 @@ public class DefaultNavigationDrawerPresenter extends MusicBindingPresenter impl
             ((CreatePlaylistDialog) dialog).setListener(this);
             setDialogExistingPlaylistNames((CreatePlaylistDialog) dialog);
         }
+        bindMusicService();
+    }
+
+    @Override
+    public void stop() {
+        unbindMusicService();
     }
 
     @Override
