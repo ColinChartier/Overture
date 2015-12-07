@@ -8,7 +8,7 @@ public interface PlaylistDatabaseHelper {
 
     List<Long> getPlaylistSongs(String playlistName);
 
-    List<Playlist> getAllPlaylists();
+    List<PlaylistData> getAllPlaylists();
 
     void createPlaylist(String name);
 

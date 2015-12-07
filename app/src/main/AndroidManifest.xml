@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.LicenseActivity"/>
+
+        <service android:name=".services.MusicService"/>
     </application>
 
 </manifest>

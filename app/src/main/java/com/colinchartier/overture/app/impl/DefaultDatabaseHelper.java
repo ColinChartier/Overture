@@ -6,8 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
-import com.colinchartier.overture.app.playlist.Playlist;
+import com.colinchartier.overture.app.playlist.PlaylistData;
 import com.colinchartier.overture.app.playlist.PlaylistDatabaseHelper;
+import com.google.common.collect.ImmutableList;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -105,8 +106,8 @@ public final class DefaultDatabaseHelper extends SQLiteOpenHelper implements Pla
     }
 
     @Override
-    public List<Playlist> getAllPlaylists() {
-        List<Playlist> ret = new ArrayList<Playlist>();
+    public List<PlaylistData> getAllPlaylists() {
+        List<PlaylistData> ret = new ArrayList<PlaylistData>();
         Cursor cursor = getReadableDatabase().query(
                 "Playlist", //Table name
                 new String[]{"name", "_id"}, //Columns to return
@@ -122,8 +123,7 @@ public final class DefaultDatabaseHelper extends SQLiteOpenHelper implements Pla
             while (cursor.moveToNext()) {
                 String name = cursor.getString(nameColumn);
                 int uid = cursor.getInt(uidColumn);
-                Playlist p = new Playlist(name);
-                p.setSongIds(getPlaylistSongIds(uid));
+                PlaylistData p = new PlaylistData(name, ImmutableList.copyOf(getPlaylistSongIds(uid)));
                 ret.add(p);
             }
         } finally {

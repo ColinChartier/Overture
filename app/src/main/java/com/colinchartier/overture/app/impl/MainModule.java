@@ -13,8 +13,6 @@ import com.colinchartier.overture.app.fragments.views.NavigationDrawerView;
 import com.colinchartier.overture.app.fragments.views.SongControlsView;
 import com.colinchartier.overture.app.fragments.views.SongListView;
 import com.colinchartier.overture.app.playlist.PlaylistDatabaseHelper;
-import com.colinchartier.overture.app.playlist.PlaylistManager;
-import com.colinchartier.overture.app.playlist.impl.DefaultPlaylistManager;
 import dagger.Module;
 import dagger.Provides;
 
@@ -59,11 +57,6 @@ public class MainModule {
     @Provides
     public FragmentManager provideFragmentManager() {
         return fragmentManager;
-    }
-
-    @Provides
-    public PlaylistManager providePlaylistManager(DefaultPlaylistManager manager) {
-        return manager;
     }
 
     /*Contextual views*/

@@ -3,6 +3,10 @@ package com.colinchartier.overture.app.fragments.presenters;
 import android.view.View;
 
 public interface SongControlsPresenter {
+    void init();
+
+    void stop();
+
     void onPlayPauseButtonClicked(View button);
 
     void onSkipPreviousButtonClicked(View button);

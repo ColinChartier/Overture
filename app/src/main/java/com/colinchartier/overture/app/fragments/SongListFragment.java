@@ -41,6 +41,20 @@ public class SongListFragment extends Fragment implements SongListView {
         ButterKnife.bind(this, view);
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        presenter.init();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        presenter.stop();
+    }
+
     @OnItemClick(R.id.song_list)
     public void onSongClicked(View view, int position) {
         presenter.onSongClicked(view, position);

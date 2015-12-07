@@ -48,6 +48,14 @@ public class SongControlsFragment extends Fragment implements SongControlsView {
         super.onViewCreated(view, savedInstanceState);
 
         ButterKnife.bind(this, view);
+        presenter.init();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        presenter.stop();
     }
 
     /*Primary media controls*/
@@ -85,5 +93,10 @@ public class SongControlsFragment extends Fragment implements SongControlsView {
     @OnClick(R.id.set_playback_speed_button)
     public void onPlaybackSpeedButtonClicked(View button) {
         presenter.onPlaybackSpeedButtonClicked(button);
+    }
+
+    @Override
+    public void setLoopButtonToggled(boolean looping) {
+
     }
 }
