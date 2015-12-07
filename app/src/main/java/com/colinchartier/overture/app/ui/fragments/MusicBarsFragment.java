@@ -48,8 +48,8 @@ public class MusicBarsFragment extends Fragment implements MusicBarsView {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onStart() {
+        super.onStart();
 
         presenter.init();
     }

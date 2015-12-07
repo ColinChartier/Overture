@@ -44,8 +44,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onStart() {
+        super.onStart();
 
         presenter.init();
     }
@@ -56,6 +56,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 
         presenter.stop();
     }
+
 
     @OnItemClick(R.id.playlist_list)
     public void onPlaylistClicked(View view, int position) {

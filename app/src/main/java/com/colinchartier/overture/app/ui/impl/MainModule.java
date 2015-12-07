@@ -2,6 +2,7 @@ package com.colinchartier.overture.app.ui.impl;
 
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
 import com.colinchartier.overture.app.ContextType;
 import com.colinchartier.overture.app.FromContext;
 import com.colinchartier.overture.app.playlist.PlaylistDatabaseHelper;
@@ -23,18 +24,21 @@ public class MainModule {
     private final Context activityContext;
     private final Context applicationContext;
     private final FragmentManager fragmentManager;
+    private final LayoutInflater layoutInflater;
 
     private final MusicBarsView musicBarsView;
     private final NavigationDrawerView navDrawerView;
     private final SongControlsView songControlsView;
     private final SongListView songListView;
 
-    public MainModule(Context activityContext, Context applicationContext, FragmentManager fragmentManager,
+    public MainModule(Context activityContext, Context applicationContext, FragmentManager fragmentManager, LayoutInflater layoutInflater,
                       MusicBarsView musicBarsView, NavigationDrawerView navDrawerView,
                       SongControlsView songControlsView, SongListView songListView) {
         this.activityContext = activityContext;
         this.applicationContext = applicationContext;
         this.fragmentManager = fragmentManager;
+        this.layoutInflater = layoutInflater;
+
         this.musicBarsView = musicBarsView;
         this.navDrawerView = navDrawerView;
         this.songControlsView = songControlsView;
@@ -57,6 +61,11 @@ public class MainModule {
     @Provides
     public FragmentManager provideFragmentManager() {
         return fragmentManager;
+    }
+
+    @Provides
+    public LayoutInflater provideLayoutInflater() {
+        return layoutInflater;
     }
 
     /*Contextual views*/

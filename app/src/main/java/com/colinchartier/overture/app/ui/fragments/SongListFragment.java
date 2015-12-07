@@ -42,8 +42,8 @@ public class SongListFragment extends Fragment implements SongListView {
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onStart() {
+        super.onStart();
 
         presenter.init();
     }
