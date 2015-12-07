@@ -1,4 +1,4 @@
-package com.colinchartier.overture.app.dialogs;
+package com.colinchartier.overture.app.ui.dialogs;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

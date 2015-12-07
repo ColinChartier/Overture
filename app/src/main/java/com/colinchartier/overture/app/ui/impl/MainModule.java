@@ -1,18 +1,18 @@
-package com.colinchartier.overture.app.impl;
+package com.colinchartier.overture.app.ui.impl;
 
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import com.colinchartier.overture.app.ContextType;
 import com.colinchartier.overture.app.FromContext;
-import com.colinchartier.overture.app.fragments.presenters.MusicBarsPresenter;
-import com.colinchartier.overture.app.fragments.presenters.NavigationDrawerPresenter;
-import com.colinchartier.overture.app.fragments.presenters.SongControlsPresenter;
-import com.colinchartier.overture.app.fragments.presenters.SongListPresenter;
-import com.colinchartier.overture.app.fragments.views.MusicBarsView;
-import com.colinchartier.overture.app.fragments.views.NavigationDrawerView;
-import com.colinchartier.overture.app.fragments.views.SongControlsView;
-import com.colinchartier.overture.app.fragments.views.SongListView;
 import com.colinchartier.overture.app.playlist.PlaylistDatabaseHelper;
+import com.colinchartier.overture.app.ui.fragments.presenters.MusicBarsPresenter;
+import com.colinchartier.overture.app.ui.fragments.presenters.NavigationDrawerPresenter;
+import com.colinchartier.overture.app.ui.fragments.presenters.SongControlsPresenter;
+import com.colinchartier.overture.app.ui.fragments.presenters.SongListPresenter;
+import com.colinchartier.overture.app.ui.fragments.views.MusicBarsView;
+import com.colinchartier.overture.app.ui.fragments.views.NavigationDrawerView;
+import com.colinchartier.overture.app.ui.fragments.views.SongControlsView;
+import com.colinchartier.overture.app.ui.fragments.views.SongListView;
 import dagger.Module;
 import dagger.Provides;
 

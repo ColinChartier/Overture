@@ -1,4 +1,4 @@
-package com.colinchartier.overture.app.fragments;
+package com.colinchartier.overture.app.ui.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,8 +11,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.colinchartier.overture.app.R;
-import com.colinchartier.overture.app.fragments.presenters.SongControlsPresenter;
-import com.colinchartier.overture.app.fragments.views.SongControlsView;
+import com.colinchartier.overture.app.ui.fragments.presenters.SongControlsPresenter;
+import com.colinchartier.overture.app.ui.fragments.views.SongControlsView;
 import com.google.common.base.Preconditions;
 
 public class SongControlsFragment extends Fragment implements SongControlsView {

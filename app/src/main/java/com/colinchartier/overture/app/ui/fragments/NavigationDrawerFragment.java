@@ -1,4 +1,4 @@
-package com.colinchartier.overture.app.fragments;
+package com.colinchartier.overture.app.ui.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -13,8 +13,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnItemClick;
 import com.colinchartier.overture.app.R;
-import com.colinchartier.overture.app.fragments.presenters.NavigationDrawerPresenter;
-import com.colinchartier.overture.app.fragments.views.NavigationDrawerView;
+import com.colinchartier.overture.app.ui.fragments.presenters.NavigationDrawerPresenter;
+import com.colinchartier.overture.app.ui.fragments.views.NavigationDrawerView;
 import com.google.common.base.Preconditions;
 
 public class NavigationDrawerFragment extends Fragment implements NavigationDrawerView {

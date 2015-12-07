@@ -1,4 +1,4 @@
-package com.colinchartier.overture.app.activities;
+package com.colinchartier.overture.app.ui.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

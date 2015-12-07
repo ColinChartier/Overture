@@ -1,4 +1,4 @@
-package com.colinchartier.overture.app.fragments.views;
+package com.colinchartier.overture.app.ui.fragments.views;
 
 public interface SongControlsView {
     void setLoopButtonToggled(boolean looping);

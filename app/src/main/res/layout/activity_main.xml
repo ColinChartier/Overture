@@ -31,7 +31,7 @@
                       android:layout_width="match_parent"
                       android:layout_height="match_parent"
                       android:layout_gravity="start"
-                      android:name="com.colinchartier.overture.app.fragments.SongListFragment"
+                      android:name="com.colinchartier.overture.app.ui.fragments.SongListFragment"
                       tools:layout="@layout/fragment_song_list"/>
         </LinearLayout>
 
@@ -43,11 +43,11 @@
             <fragment android:id="@+id/song_controls_fragment"
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
-                      android:name="com.colinchartier.overture.app.fragments.SongControlsFragment"
+                      android:name="com.colinchartier.overture.app.ui.fragments.SongControlsFragment"
                       tools:layout="@layout/fragment_song_controls"/>
             <fragment
                     android:id="@+id/music_bars_fragment"
-                    android:name="com.colinchartier.overture.app.fragments.MusicBarsFragment"
+                    android:name="com.colinchartier.overture.app.ui.fragments.MusicBarsFragment"
                     android:layout_width="match_parent"
                     android:layout_height="0px"
                     android:layout_weight="1"/>
@@ -60,7 +60,7 @@
               android:layout_width="@dimen/left_drawer_width"
               android:layout_height="match_parent"
               android:layout_gravity="start"
-              android:name="com.colinchartier.overture.app.fragments.NavigationDrawerFragment"
+              android:name="com.colinchartier.overture.app.ui.fragments.NavigationDrawerFragment"
               tools:layout="@layout/fragment_navigation_drawer"/>
 
 </android.support.v4.widget.DrawerLayout>

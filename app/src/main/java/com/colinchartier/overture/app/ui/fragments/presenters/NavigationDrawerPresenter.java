@@ -1,4 +1,4 @@
-package com.colinchartier.overture.app.fragments.presenters;
+package com.colinchartier.overture.app.ui.fragments.presenters;
 
 import android.view.View;
 

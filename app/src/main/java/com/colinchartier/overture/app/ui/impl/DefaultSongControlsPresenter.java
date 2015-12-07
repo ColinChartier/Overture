@@ -1,11 +1,11 @@
-package com.colinchartier.overture.app.impl;
+package com.colinchartier.overture.app.ui.impl;
 
 import android.content.Context;
 import android.view.View;
 import com.colinchartier.overture.app.ContextType;
 import com.colinchartier.overture.app.FromContext;
-import com.colinchartier.overture.app.fragments.presenters.SongControlsPresenter;
-import com.colinchartier.overture.app.fragments.views.SongControlsView;
+import com.colinchartier.overture.app.ui.fragments.presenters.SongControlsPresenter;
+import com.colinchartier.overture.app.ui.fragments.views.SongControlsView;
 
 import javax.inject.Inject;
 import java.util.concurrent.TimeUnit;

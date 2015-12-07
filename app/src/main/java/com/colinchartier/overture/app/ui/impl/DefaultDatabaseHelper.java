@@ -1,4 +1,4 @@
-package com.colinchartier.overture.app.impl;
+package com.colinchartier.overture.app.ui.impl;
 
 import android.content.ContentValues;
 import android.content.Context;

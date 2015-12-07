@@ -1,4 +1,4 @@
-package com.colinchartier.overture.app.fragments;
+package com.colinchartier.overture.app.ui.fragments;
 
 import android.content.Context;
 import android.graphics.*;
@@ -14,8 +14,8 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import com.colinchartier.overture.app.fragments.presenters.MusicBarsPresenter;
-import com.colinchartier.overture.app.fragments.views.MusicBarsView;
+import com.colinchartier.overture.app.ui.fragments.presenters.MusicBarsPresenter;
+import com.colinchartier.overture.app.ui.fragments.views.MusicBarsView;
 import com.google.common.base.Preconditions;
 
 import java.util.ArrayList;

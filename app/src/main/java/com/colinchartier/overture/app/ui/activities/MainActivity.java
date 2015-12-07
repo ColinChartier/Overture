@@ -1,4 +1,4 @@
-package com.colinchartier.overture.app.activities;
+package com.colinchartier.overture.app.ui.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,13 +6,13 @@ import android.support.v7.widget.Toolbar;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.colinchartier.overture.app.R;
-import com.colinchartier.overture.app.fragments.MusicBarsFragment;
-import com.colinchartier.overture.app.fragments.NavigationDrawerFragment;
-import com.colinchartier.overture.app.fragments.SongControlsFragment;
-import com.colinchartier.overture.app.fragments.SongListFragment;
-import com.colinchartier.overture.app.impl.DaggerMainComponent;
-import com.colinchartier.overture.app.impl.MainComponent;
-import com.colinchartier.overture.app.impl.MainModule;
+import com.colinchartier.overture.app.ui.fragments.MusicBarsFragment;
+import com.colinchartier.overture.app.ui.fragments.NavigationDrawerFragment;
+import com.colinchartier.overture.app.ui.fragments.SongControlsFragment;
+import com.colinchartier.overture.app.ui.fragments.SongListFragment;
+import com.colinchartier.overture.app.ui.impl.DaggerMainComponent;
+import com.colinchartier.overture.app.ui.impl.MainComponent;
+import com.colinchartier.overture.app.ui.impl.MainModule;
 
 public class MainActivity extends AppCompatActivity {
     @Bind(R.id.app_bar)

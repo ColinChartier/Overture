@@ -1,9 +1,9 @@
-package com.colinchartier.overture.app.impl;
+package com.colinchartier.overture.app.ui.impl;
 
 import android.content.Context;
 import com.colinchartier.overture.app.ContextType;
 import com.colinchartier.overture.app.FromContext;
-import com.colinchartier.overture.app.fragments.presenters.MusicBarsPresenter;
+import com.colinchartier.overture.app.ui.fragments.presenters.MusicBarsPresenter;
 
 import javax.inject.Inject;
 

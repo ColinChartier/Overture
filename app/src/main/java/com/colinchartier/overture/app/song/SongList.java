@@ -4,9 +4,6 @@ import com.google.common.base.Preconditions;
 
 import java.util.*;
 
-/**
- * Created by overcaste on 4/4/2015.
- */
 public class SongList {
     private final List<Song> songs;
     private Comparator<Song> sortMethod;

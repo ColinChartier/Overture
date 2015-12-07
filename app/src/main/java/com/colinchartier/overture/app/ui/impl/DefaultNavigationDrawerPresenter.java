@@ -1,4 +1,4 @@
-package com.colinchartier.overture.app.impl;
+package com.colinchartier.overture.app.ui.impl;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,11 +15,11 @@ import android.widget.TextView;
 import com.colinchartier.overture.app.ContextType;
 import com.colinchartier.overture.app.FromContext;
 import com.colinchartier.overture.app.R;
-import com.colinchartier.overture.app.activities.LicenseActivity;
-import com.colinchartier.overture.app.dialogs.CreatePlaylistDialog;
-import com.colinchartier.overture.app.fragments.presenters.NavigationDrawerPresenter;
-import com.colinchartier.overture.app.fragments.views.NavigationDrawerView;
 import com.colinchartier.overture.app.playlist.Playlist;
+import com.colinchartier.overture.app.ui.activities.LicenseActivity;
+import com.colinchartier.overture.app.ui.dialogs.CreatePlaylistDialog;
+import com.colinchartier.overture.app.ui.fragments.presenters.NavigationDrawerPresenter;
+import com.colinchartier.overture.app.ui.fragments.views.NavigationDrawerView;
 
 import javax.inject.Inject;
 import java.util.HashSet;
