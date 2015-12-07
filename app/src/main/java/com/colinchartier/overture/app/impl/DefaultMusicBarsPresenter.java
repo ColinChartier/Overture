@@ -30,6 +30,6 @@ public class DefaultMusicBarsPresenter extends MusicBindingPresenter implements 
 
     @Override
     protected void onMusicServiceConnected() {
-
+        //TODO listen in on music playing state to update seek bars
     }
 }

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import butterknife.Bind;
@@ -69,5 +70,10 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     @OnClick(R.id.license_info)
     public void onLicenseInfoButtonClciked(View button) {
         presenter.onLicenseInfoButtonClicked(button);
+    }
+
+    @Override
+    public void setPlaylists(ListAdapter adapter) {
+        playlists.setAdapter(adapter);
     }
 }

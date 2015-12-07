@@ -16,9 +16,14 @@ public interface PlaylistManager {
     Playlist getPlaylist(String playlistName);
 
     /**
-     * @return an unmodifiable view of all playlists.
+     * @return an unmodifiable view of all playlists backed by the internal list.
      */
     List<Playlist> getPlaylists();
+
+    /**
+     * @return an unmodifiable view of the names of the playlists, backed by the internal list.
+     */
+    List<String> getPlaylistNames();
 
     void createPlaylist(String name);
 

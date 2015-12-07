@@ -7,9 +7,14 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 import com.colinchartier.overture.app.ContextType;
 import com.colinchartier.overture.app.FromContext;
+import com.colinchartier.overture.app.R;
 import com.colinchartier.overture.app.activities.LicenseActivity;
 import com.colinchartier.overture.app.dialogs.CreatePlaylistDialog;
 import com.colinchartier.overture.app.fragments.presenters.NavigationDrawerPresenter;
@@ -27,16 +32,18 @@ public class DefaultNavigationDrawerPresenter extends MusicBindingPresenter impl
     private final NavigationDrawerView view;
     private final Context activityContext;
     private final FragmentManager fragmentManager;
+    private final LayoutInflater inflater;
 
     private boolean userLearnedDrawer;
 
     @Inject
     public DefaultNavigationDrawerPresenter(NavigationDrawerView view, @FromContext(ContextType.ACTIVITY) Context activityContext,
-                                            FragmentManager fragmentManager) {
+                                            FragmentManager fragmentManager, LayoutInflater inflater) {
         super(activityContext);
         this.view = view;
         this.activityContext = activityContext;
         this.fragmentManager = fragmentManager;
+        this.inflater = inflater;
     }
 
     @Override
@@ -97,6 +104,37 @@ public class DefaultNavigationDrawerPresenter extends MusicBindingPresenter impl
 
     @Override
     protected void onMusicServiceConnected() {
+        view.setPlaylists(new BaseAdapter() {
+                              @Override
+                              public int getCount() {
+                                  return getMusicService().getPlaylistManager().getPlaylistNames().size();
+                              }
 
+                              @Override
+                              public Object getItem(int position) {
+                                  return null;
+                              }
+
+                              @Override
+                              public long getItemId(int position) {
+                                  return 0;
+                              }
+
+                              @Override
+                              public View getView(int position, View convertView, ViewGroup parent) {
+                                  final TextView nameHolder;
+                                  String currPlaylist = getMusicService().getPlaylistManager().getPlaylistNames().get(position);
+                                  if (convertView == null) { // We haven't cached this row's layout yet.
+                                      convertView = inflater.inflate(R.layout.playlist, parent, false);
+                                      nameHolder = (TextView) convertView.findViewById(R.id.playlist);
+                                      convertView.setTag(nameHolder);
+                                  } else { // Playlist is already cached.
+                                      nameHolder = (TextView) convertView.getTag();
+                                  }
+                                  nameHolder.setText(currPlaylist);
+                                  return convertView;
+                              }
+                          }
+        );
     }
 }

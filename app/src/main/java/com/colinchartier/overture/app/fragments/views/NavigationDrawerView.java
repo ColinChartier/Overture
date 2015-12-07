@@ -1,5 +1,7 @@
 package com.colinchartier.overture.app.fragments.views;
 
-public interface NavigationDrawerView {
+import android.widget.ListAdapter;
 
+public interface NavigationDrawerView {
+    void setPlaylists(ListAdapter adapter);
 }
