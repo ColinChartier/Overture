@@ -27,7 +27,7 @@ public class CreatePlaylistDialog extends DialogFragment {
     private AlertDialog alert;
 
     private String playlistName = "";
-    private Set<String> existingPlaylistNames = new HashSet<String>();
+    private Set<String> existingPlaylistNames = new HashSet<>();
     private static final Pattern WHITESPACE_PATTERN = Pattern.compile("^\\s+$");
 
 
@@ -58,8 +58,10 @@ public class CreatePlaylistDialog extends DialogFragment {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE ||
                         (event != null && event.getAction() == KeyEvent.ACTION_DOWN && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
-                    dismiss();
-                    return true;
+                    if (playlistNameValid(playlistName)) {
+                        onFinish();
+                        return true;
+                    }
                 }
                 return false;
             }

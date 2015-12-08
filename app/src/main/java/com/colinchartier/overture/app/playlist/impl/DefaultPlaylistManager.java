@@ -3,6 +3,7 @@ package com.colinchartier.overture.app.playlist.impl;
 import android.support.annotation.Nullable;
 import com.colinchartier.overture.app.playlist.Playlist;
 import com.colinchartier.overture.app.playlist.PlaylistManager;
+import com.colinchartier.overture.app.playlist.listeners.OnPlaylistListChangedListener;
 import com.google.common.base.Function;
 import com.google.common.collect.Lists;
 
@@ -15,6 +16,9 @@ public class DefaultPlaylistManager implements PlaylistManager {
     private final Map<String, Playlist> playlistMap = new HashMap<>(32);
     private final List<Playlist> playlists = new ArrayList<>();
 
+    /*Listeners*/
+    private final List<OnPlaylistListChangedListener> playlistListChangedListeners = new ArrayList<>();
+
     @Inject
     public DefaultPlaylistManager() {
 
@@ -22,13 +26,16 @@ public class DefaultPlaylistManager implements PlaylistManager {
 
     @Override
     public void reloadPlaylists() {
-
+        //TODO
+        for (OnPlaylistListChangedListener l : playlistListChangedListeners) {
+            l.onPlaylistListChanged();
+        }
     }
 
     @Nullable
     @Override
     public Playlist getPlaylist(String playlistName) {
-        return null;
+        return playlistMap.get(playlistName);
     }
 
     @Override
@@ -70,5 +77,15 @@ public class DefaultPlaylistManager implements PlaylistManager {
     public Playlist getSelectedPlaylist() {
         Playlist selectedPlaylist = playlistMap.get(selectedPlaylistName);
         return selectedPlaylist == null ? getDefaultPlaylist() : selectedPlaylist;
+    }
+
+    @Override
+    public void addPlaylistListChangedListener(OnPlaylistListChangedListener listener) {
+        playlistListChangedListeners.add(listener);
+    }
+
+    @Override
+    public void removePlaylistListChangedListener(OnPlaylistListChangedListener listener) {
+        playlistListChangedListeners.remove(listener);
     }
 }

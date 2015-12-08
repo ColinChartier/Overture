@@ -1,6 +1,7 @@
 package com.colinchartier.overture.app.playlist;
 
 import android.support.annotation.Nullable;
+import com.colinchartier.overture.app.playlist.listeners.OnPlaylistListChangedListener;
 
 import java.util.List;
 
@@ -35,4 +36,9 @@ public interface PlaylistManager {
      * @return the playlist last selected by {@link #selectPlaylist(String)}, or {@link #getDefaultPlaylist()} if none has been set.
      */
     Playlist getSelectedPlaylist();
+
+    /*Listeners*/
+    void addPlaylistListChangedListener(OnPlaylistListChangedListener listener);
+
+    void removePlaylistListChangedListener(OnPlaylistListChangedListener listener);
 }
